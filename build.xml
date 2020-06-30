@@ -19,9 +19,10 @@
         <mkdir dir="${classes.dir}"/>
     	<mkdir dir="${build.dir}/test/classes"/>
     	<javac srcdir="${src.dir}/main" destdir="${classes.dir}" includeantruntime="false" />
-    	<javac srcdir="src/test/java" destdir="build/test/classes" includeantruntime="true">
+    	<javac srcdir="src/test/java" destdir="build/test/classes" includeantruntime="true" > 
     	<classpath>
    			<pathelement location = "${classes.dir}" />
+		<!--	<pathelement location = "D:/Program File/apache-ant-1.10.8/lib/org.junit.jupiter.api_5.6.0.v20200203-2009.jar" /> -->
     	</classpath>
     	</javac>
     </target>
@@ -36,15 +37,15 @@
         </jar>
     </target>
 	
-	<target name="Junit_run" depends="compile" >  
+	<target name="Junit_run" >  
 	
-	 <junit printsummary="yes" haltonfailure="no">
-				<test name="com.healthycoderapp.BMICalculatorTest"/> 
-			 	<classpath>
-			   			<pathelement location = "${classes.dir}" />
-			    		
-			    </classpath>
-			 
+	 <junit printsummary="yes" haltonfailure="no" includeantruntime="true">
+			
+			 	<classpath>			   			
+						<pathelement location= "build/test/classes" />
+						<pathelement location = "${classes.dir}" />
+			    </classpath> 		
+			<test name="com.healthycoderapp.BMICalculatorTest" /> 
 	    </junit>  
 	    </target>  
 
